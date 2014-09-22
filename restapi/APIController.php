@@ -2,8 +2,6 @@
 
 namespace restapi;
 
-use PDO;  // Includes PDO in this namespace.
-
 require_once 'APIResponse.php';
 require_once 'HTTPException.php';
 require_once 'HTTPBadRequestException.php';  // Frequently used classes
@@ -291,7 +289,7 @@ abstract class APIController {
     public function dispatchAPI() {
         $allowed = $this->allowed_http_methods();
         if (key_exists($this->method, $allowed)) {
-            $this->_setup_db();
+            $this->init_model();
             switch ($this->method) {
                 case 'DELETE':
                     return $this->_response($this->do_delete());
@@ -353,13 +351,14 @@ abstract class APIController {
         return $allowed;
     }
 
-    private function _setup_db() {
-// Set up a DB connection for the API subclass to use
-        $this->db = new PDO('mysql:host=127.0.0.1;dbname=MY_DATABASE',
-            'MY_DB_USERNAME', 'MY_DB_PASSWORD');
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// This sets the default return style to column_name => value
-        $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    /**
+     * Stub method to load the data model.  This is called by dispatchAPI
+     * just before calling the do_get/post/put/delete method.
+     * 
+     * Subclasses can override this to, for example, connect to a database.
+     */
+    public function init_model() {
+        return null;
     }
 
     /**
