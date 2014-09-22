@@ -52,7 +52,9 @@ if ($resource_list["$resource"]) {
  */
 function get_api_object($handler, $request) {
     $classfile = "${handler}.php";
-    require_once( __DIR__ . "/../src/controller/$classfile" );
+    // Requires that the caller (e.g. api.php) included "src" in the
+    // include path
+    require_once("controller/$classfile" );
     require_once( __DIR__ . '/APIResponse.php');
     $classname = 'restapi\\' . $handler;
     $api = new $classname($request);

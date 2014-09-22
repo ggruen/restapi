@@ -9,4 +9,9 @@ $resource_list = array(
     'myotherresource' => 'MyOtherResourceController',
 );
 
-include './restapi/dispatch.php';
+// restapi/dispatch.php needs to include the classes referenced above.
+// In case restapi is symlinked, this lets dispatch.php find the controllers.
+$path = __DIR__ . DIRECTORY_SEPARATOR . 'src';
+set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+
+include join(DIRECTORY_SEPARATOR, array('.', 'restapi', 'dispatch.php'));
