@@ -18,7 +18,7 @@ the included api.php routing file (below) and a TemplateController.php file.
 
 It implements MVC like so:
 
-- Model: SQL to your database
+- Model: SQL to your database (although that's optional)
 - Controller: php classes you write (modify) based on a template
 - View: Your front-end HTML5, iOS, MacOS X, Android, Java, etc app
 
@@ -32,8 +32,6 @@ Install/Upgrade
 - Copy `restapi/restapi` into your php project folder (overwrite existing dir
   if upgrading)
 - New installation only: copy `restapi/api.php` into your php project folder
-- Configure database connection info in `restapi/restapi/APIController.php`'s
-  `_setup_db` method (TODO: Move this out of restapi folder)
 
 Use
 =====
@@ -78,12 +76,17 @@ Access
 Write
 =====
 
-- Copy `restapi/TemplateController.php` to
-  `src/controller/MyResourceController.php`
-- Open, review, and edit `src/controller/MyResourceController.php`
-    - It provides example `do_get()` and `do_post()` methods.  The do_post
+- Copy `restapi/templates/TemplateController.php` to
+  `project_dir/src/controller/MyResourceController.php`
+- Open, review, and edit `project_dir/src/controller/MyResourceController.php`
+    - It provides example `do_get()` and `do_post()` methods.  The `do_post`
         method will work "out of the box" by just modifying the table and
         column names.
+    - To connect to a database, copy `restapi/templates/DBAPIController.php`
+      to `project_dir/src/controller/`.  If you don't want to connect to
+      a database, uncomment the different class definition in
+      MyResourceController.php.  All your controller classes can subclass
+      DBAPIController, so you only need to set that up once.
 
 About/Why
 =========

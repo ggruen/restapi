@@ -18,7 +18,11 @@ use Exception;
  * - See it at http://yourdomain.com/myresource/ID-or-filters/args
  * - Profit!
  */
-class TemplateController extends APIController {
+ 
+class TemplateController extends DBAPIController {
+// If you don't want to connect to a DB with the DBAPIController class, do
+// this instead:
+//class TemplateController extends APIController {
 
     /**
      * Handle GET requests.  If you aren't supporting GET for this resource,
