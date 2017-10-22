@@ -182,7 +182,7 @@ abstract class APIController {
         $passed_method = $method ? $method : $_SERVER['REQUEST_METHOD'];
 
         // Then check for PUT or DELETE hidden in a POST
-        if ($passed_method === 'POST' && \is_string($_SERVER['HTTP_X_HTTP_METHOD'])) {
+        if ($passed_method === 'POST' && !empty($_SERVER['HTTP_X_HTTP_METHOD']) && \is_string($_SERVER['HTTP_X_HTTP_METHOD'])) {
             /* @var $embdded_method string If the actual HTTP method was a
              * POST and the sender included a PUT or DELETE method in an
              * HTTP_X_HTTP_METHOD header, $embedded_method will contain the

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace restapi;
 
+// Make sure we catch anything a stricter system will catch
+error_reporting(E_ALL);
+
 use PHPUnit\Framework\TestCase;
 
 require_once(__DIR__ . '/./APIControllerTester.php');
@@ -32,7 +35,7 @@ class APIControllerTest extends TestCase {
 
         // Test Array parsing
         $a->extract_http_method("POST");
-        $keyvalue_body = $a->extract_http_body([hi => "there"],
+        $keyvalue_body = $a->extract_http_body(["hi" => "there"],
             "application/x-www-form-urlencoded");
         $this->assertTrue($keyvalue_body['hi'] === "there");
         

@@ -8,6 +8,9 @@
 
 namespace restapi;
 
+// Make sure we catch anything a stricter system will catch
+error_reporting(E_ALL);
+
 require_once(__DIR__ . '/../restapi/APIController.php');
 
 /**

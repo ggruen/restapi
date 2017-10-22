@@ -20,7 +20,7 @@ class HTTPNotImplementedException extends HTTPException {
 
     function __construct($message, $code=null, $previous=null) {
 
-        parent::__construct(new APIResponse([status_code => 501, body => $message]),
+        parent::__construct(new APIResponse(["status_code" => 501, "body" => $message]),
             $code, $previous);
     }
 

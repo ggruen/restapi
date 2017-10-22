@@ -19,7 +19,7 @@ require_once 'HTTPException.php';
 class HTTPBadRequestException extends HTTPException {
 
     function __construct($message, $code=null, $previous=null) {
-        parent::__construct(new APIResponse([status_code => 400, body => $message]),
+        parent::__construct(new APIResponse(["status_code" => 400, "body" => $message]),
             $code, $previous);
     }
 
