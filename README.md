@@ -109,8 +109,7 @@ MISC
 Tests
 -----
 
-    cd restapi
-    phpunit --strict tests
+    phpunit tests # (in the repository root)
     
 Launch PHP dev server
 ---------------------

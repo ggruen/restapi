@@ -1,7 +1,9 @@
 <?php
+declare(strict_types=1);
+
 namespace restapi;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 require_once(__DIR__.'/../restapi/HTTPBadRequestException.php');
 
@@ -10,7 +12,7 @@ require_once(__DIR__.'/../restapi/HTTPBadRequestException.php');
  *
  * @author grant
  */
-class HTTPBadRequestExceptionTest extends PHPUnit_Framework_TestCase {
+class HTTPBadRequestExceptionTest extends TestCase {
 
     public function test__construct() {
         // Arrange

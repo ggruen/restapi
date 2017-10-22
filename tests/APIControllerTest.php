@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace restapi;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 require_once(__DIR__ . '/./APIControllerTester.php');
 
@@ -11,7 +13,7 @@ require_once(__DIR__ . '/./APIControllerTester.php');
  *
  * @author grant
  */
-class APIControllerTest extends PHPUnit_Framework_TestCase {
+class APIControllerTest extends TestCase {
 
     public function test__construct() {
         // This test just passes if it doesn't error
